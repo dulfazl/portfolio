@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio — Muhammed Dulfazal</title>
+  <meta name="description" content="Portfolio of Muhammed Dulfazal — Front-End Developer skilled in UI/UX, web performance, and modern responsive design." />
+  <style>
+    /* ====== Design Tokens ====== */
+    :root {
+      --bg: #0b0c10;
+      --card: #111317;
+      --text: #e8edf2;
+      --muted: #a8b3c1;
+      --accent: #4cc9f0;
+      --accent-2: #ffb703;
+      --border: #1b1f2a;
+      --shadow: 0 8px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --maxw: 1100px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7f8fb;
+        --card: #ffffff;
+        --text: #111317;
+        --muted: #4c5562;
+        --border: #e7e9ef;
+        --shadow: 0 10px 30px rgba(10,10,10,.06);
+      }
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell;
+      background: radial-gradient(1200px 650px at 90% -10%, rgba(76,201,240,.08), transparent 60%),
+                  radial-gradient(1000px 600px at -10% 0%, rgba(255,183,3,.08), transparent 60%), var(--bg);
+      color: var(--text); line-height: 1.6;
+    }
+    img { max-width: 100%; display: block; border-radius: var(--radius); }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: color-mix(in srgb, var(--accent) 25%, transparent); }
+    .container { width: min(var(--maxw), 92%); margin-inline: auto; }
+    header {
+      position: sticky; top: 0; z-index: 40; backdrop-filter: saturate(140%) blur(10px);
+      background: color-mix(in srgb, var(--bg) 80%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .brand { font-weight: 800; letter-spacing: .4px; }
+    .brand span { color: var(--accent); }
+    .menu a { margin-left: 20px; padding: 8px 12px; border-radius: 999px; border: 1px solid transparent; }
+    .menu a:hover { border-color: var(--border); background: color-mix(in srgb, var(--card) 70%, transparent); }
+    .hero { display: grid; grid-template-columns: 1.25fr .9fr; gap: 36px; align-items: center; padding: 70px 0 30px; }
+    .tag { display: inline-block; padding: 6px 12px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 14px; }
+    h1 { font-size: clamp(32px, 4vw + 8px, 56px); line-height: 1.1; margin: 16px 0; }
+    .lead { font-size: clamp(16px, 1.2vw + 10px, 20px); color: var(--muted); max-width: 60ch; }
+    .cta { display: flex; gap: 12px; margin-top: 26px; flex-wrap: wrap; }
+    .btn { padding: 12px 18px; border-radius: 12px; border: 1px solid var(--border); background: var(--card); box-shadow: var(--shadow); }
+    .btn.primary { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #071014; border: none; font-weight: 700; }
+    .btn:hover { transform: translateY(-2px); transition: transform .15s ease; }
+    .avatar-card { position: relative; border: 1px solid var(--border); background: linear-gradient(180deg, color-mix(in srgb, var(--card) 95%, transparent), var(--card));
+      border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
+    .avatar { aspect-ratio: 1/1; border-radius: 14px; object-fit: cover; }
+    .avatar-note { position: absolute; bottom: -12px; right: 14px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 6px 10px; font-size: 12px; color: var(--muted); box-shadow: var(--shadow); }
+    section { padding: 60px 0; }
+    .section-title { font-size: 28px; margin-bottom: 18px; }
+    .section-subtitle { color: var(--muted); margin-bottom: 24px; }
+    .grid { display: grid; gap: 18px; }
+    .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 920px) { .hero { grid-template-columns: 1fr; } .grid.cols-3 { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 640px) { .grid.cols-3, .grid.cols-2 { grid-template-columns: 1fr; } }
+    .card { border: 1px solid var(--border); background: var(--card); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
+    .card h3 { margin: 2px 0 8px; font-size: 18px; }
+    .pill { display: inline-block; padding: 6px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 22%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border)); color: var(--text); font-size: 12px; }
+    .timeline { position: relative; }
+    .timeline::before { content: ""; position: absolute; left: 10px; top: 4px; bottom: 4px; width: 2px; background: var(--border); }
+    .t-item { position: relative; padding-left: 38px; margin-bottom: 18px; }
+    .t-item::before { content: ""; position: absolute; left: 4px; top: 4px; width: 14px; height: 14px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 30%, transparent); }
+    .t-meta { color: var(--muted); font-size: 13px; margin-bottom: 6px; }
+    .contact-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 18px; }
+    @media (max-width: 840px) { .contact-grid { grid-template-columns: 1fr; } }
+    form { display: grid; gap: 12px; }
+    label { font-weight: 600; font-size: 14px; }
+    input, textarea {
+      width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border);
+      background: var(--card); color: var(--text);
+    }
+    textarea { min-height: 140px; resize: vertical; }
+    .muted { color: var(--muted); }
+    footer { border-top: 1px solid var(--border); padding: 30px 0 60px; color: var(--muted); }
+    .social a { margin-right: 12px; border: 1px solid var(--border); padding: 8px 12px; border-radius: 999px; }
+    .center { text-align: center; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand"><span>●</span> Muhammed Dulfazal</div>
+      <nav class="menu" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact" class="pill">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="tag">Available for freelance / full-time</span>
+        <h1>Hi, I'm <span style="color:var(--accent)">Muhammed Dulfazal</span> — a <u>UI/UX-minded</u> Front-End Developer crafting fast, elegant websites.</h1>
+        <p class="lead">I specialize in creating responsive, user-friendly web interfaces with clean code and performance-focused design. My goal is to deliver seamless digital experiences for clients and businesses.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">See My Work</a>
+          <a class="btn" href="#contact">Contact Me</a>
+        </div>
+      </div>
+      <aside class="avatar-card">
+        <img src="profile.jpg" alt="Muhammed Dulfazal" class="avatar" />
+        <div class="avatar-note">📍 Calicut, Kerala</div>
+      </aside>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">About</h2>
+      <p class="section-subtitle">Who I am & how I work</p>
+      <div class="card">
+        <p>
+          Hi, I'm Muhammed Dulfazal, born in Calicut, Kerala, and raised in the UAE. Currently, I’m pursuing my BCA at Kristu Jayanti University. I’m passionate about coding, technology, and building projects that solve real-world problems. My goal is to become a skilled developer, create innovative solutions, and make a positive impact.
+        </p>
+        <p>
+          <strong>Highlights:</strong> 3+ years experience • UI/UX-driven development • Performance optimization
+        </p>
+      </div>
+    </section>
+
+<section id="skills">
+  <h2 class="section-title">Skills</h2>
+  <p class="section-subtitle">Tech I work with</p>
+  <div class="grid cols-3">
+    <div class="card">
+      <h3>Core</h3>
+      <p class="muted">HTML • CSS • Java • Python • C</p>
+    </div>
+    <div class="card">
+      <h3>Development</h3>
+      <p class="muted">Django • Flutter • TensorFlow • MySQL</p>
+    </div>
+    <div class="card">
+      <h3>Tools</h3>
+      <p class="muted">Git & GitHub • VSCode • Android Studio • Figma</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="section-title">Projects</h2>
+  <p class="section-subtitle">What I’ve been working on</p>
+  <div class="grid cols-3">
+    <article class="card">
+      <div class="pill">2025 • College Project</div>
+      <h3>V-SL Recognition</h3>
+      <p class="muted">A web app using Django, YOLO, OpenPose, and Whisper to recognize Indian Sign Language and voice input in real time.</p>
+      <p><a class="pill" href="#">GitHub</a></p>
+    </article>
+    <article class="card">
+      <div class="pill">2025 • Personal</div>
+      <h3>YouTube Video Summarizer</h3>
+      <p class="muted">Created a tool that summarizes YouTube videos into short notes using NLP and AI models.</p>
+      <p><a class="pill" href="#">GitHub</a></p>
+    </article>
+    <article class="card">
+      <div class="pill">2024 • Business</div>
+      <h3>Car Accessories Website</h3>
+      <p class="muted">Developed an online storefront for selling car accessories with a clean UI and easy navigation.</p>
+      <p><a class="pill" href="#">Live Site</a></p>
+    </article>
+  </div>
+</section>
+
+
+    <section id="experience">
+      <h2 class="section-title">Experience</h2>
+      <p class="section-subtitle">Roles & impact</p>
+      <div class="card timeline">
+        <div class="t-item">
+          <div class="t-meta">2023 — Present · Front-End Developer · Freelance</div>
+          <h3>Building websites & dashboards</h3>
+          <p class="muted">Delivered responsive, high-performance sites for startups and businesses. Focus on UX audits and performance passes.</p>
+        </div>
+        <div class="t-item">
+          <div class="t-meta">2021 — 2023 · Web Designer · Agency</div>
+          <h3>Design to web</h3>
+          <p class="muted">Converted Figma designs into production-ready, accessible websites. Handled CSS architecture and design systems.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-subtitle">Let’s build something great</p>
+      <div class="contact-grid">
+        <div class="card">
+          <form action="#" method="post" onsubmit="return false">
+            <label for="name">Your Name</label>
+            <input id="name" name="name" placeholder="Enter Name" required>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="yourmail@example.com" required>
+            <label for="msg">Message</label>
+            <textarea id="msg" name="message" placeholder="Tell me about your project…" required></textarea>
+            <button class="btn primary" type="submit" aria-disabled="true">Send Message</button>
+            <div class="muted">This form is a demo.</div>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Direct</h3>
+          <p class="muted">📍 Calicut, Kerala, India<br>✉️ <a href="mailto:dulfazal9@gmail.com">mail.dulfazl@gmail.com</a><br>🔗 <a href="https://www.linkedin.com/in/muhammed-dulfazal-4499332b7/">LinkedIn</a></p>
+          <div class="social" aria-label="Social links">
+            <a href="https://www.linkedin.com/in/muhammed-dulfazal-389a01286/">LinkedIn</a>
+            <a href="https://github.com/dulfazl">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="center">© <span id="y">2025</span> Muhammed Dulfazal — Built with semantic HTML & modern CSS.</div>
+    </div>
+  </footer>
+</body>
+</html>
