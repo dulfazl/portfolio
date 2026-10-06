@@ -8,21 +8,21 @@
 
   <!-- Title & Description -->
   <title>Muhammed Dulfazal — Portfolio</title>
-  <meta name="description" content="Official portfolio of Muhammed Dulfazal — Front-End Developer & UI/UX Enthusiast. Crafting elegant, responsive, and high-performance web experiences." />
-  <meta name="keywords" content="Muhammed Dulfazal, portfolio, front-end developer, UI UX, web developer, responsive design, modern websites" />
+  <meta name="description" content="Portfolio of Muhammed Dulfazal — MSc AI/ML student at VIT Vellore building AI, computer vision, backend and mobile applications." />
+  <meta name="keywords" content="Muhammed Dulfazal, portfolio, MSc AI ML, machine learning, computer vision, Indian Sign Language recognition, Django, Kotlin, VIT Vellore" />
   <meta name="author" content="Muhammed Dulfazal" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="Muhammed Dulfazal — Portfolio" />
-  <meta property="og:description" content="Front-End Developer | UI/UX Enthusiast | Building modern, fast, and user-friendly websites." />
+  <meta property="og:description" content="MSc AI/ML student building AI, computer vision, backend &amp; mobile applications." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://dulfazl.github.io/portfolio/" /> <!-- replace with your URL -->
-  <meta property="og:image" content="https://dulfazl.github.io/portfolio/profile.jpg" /> <!-- replace with preview image -->
+  <meta property="og:url" content="https://dulfazl.github.io/portfolio/" />
+  <meta property="og:image" content="https://dulfazl.github.io/portfolio/profile.jpg" />
 
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Muhammed Dulfazal — Portfolio" />
-  <meta name="twitter:description" content="Front-End Developer & UI/UX Enthusiast. Explore my work and projects." />
+  <meta name="twitter:description" content="MSc AI/ML student building AI, computer vision, backend &amp; mobile applications." />
   <meta name="twitter:image" content="https://dulfazl.github.io/portfolio/profile.jpg" />
 
   <!-- Theme Color -->
@@ -30,6 +30,7 @@
 
   <!-- Favicon -->
   <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="favicon.png" />
   <style>
     /* ====== Design Tokens ====== */
     :root {
@@ -56,6 +57,7 @@
     }
     *, *::before, *::after { box-sizing: border-box; }
     html, body { height: 100%; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell;
       background: radial-gradient(1200px 650px at 90% -10%, rgba(76,201,240,.08), transparent 60%),
@@ -71,10 +73,11 @@
       background: color-mix(in srgb, var(--bg) 80%, transparent);
       border-bottom: 1px solid var(--border);
     }
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 14px 0; }
     .brand { font-weight: 800; letter-spacing: .4px; }
     .brand span { color: var(--accent); }
-    .menu a { margin-left: 20px; padding: 8px 12px; border-radius: 999px; border: 1px solid transparent; }
+    .menu { display: flex; flex-wrap: wrap; gap: 4px; }
+    .menu a { padding: 8px 12px; border-radius: 999px; border: 1px solid transparent; }
     .menu a:hover { border-color: var(--border); background: color-mix(in srgb, var(--card) 70%, transparent); }
     .hero { display: grid; grid-template-columns: 1.25fr .9fr; gap: 36px; align-items: center; padding: 70px 0 30px; }
     .tag { display: inline-block; padding: 6px 12px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 14px; }
@@ -86,36 +89,41 @@
     .btn:hover { transform: translateY(-2px); transition: transform .15s ease; }
     .avatar-card { position: relative; border: 1px solid var(--border); background: linear-gradient(180deg, color-mix(in srgb, var(--card) 95%, transparent), var(--card));
       border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
-    .avatar { aspect-ratio: 1/1; border-radius: 14px; object-fit: cover; }
+    .avatar { aspect-ratio: 1/1; width: 100%; border-radius: 14px; object-fit: cover; }
     .avatar-note { position: absolute; bottom: -12px; right: 14px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 6px 10px; font-size: 12px; color: var(--muted); box-shadow: var(--shadow); }
     section { padding: 60px 0; }
+    section[id] { scroll-margin-top: 70px; }
     .section-title { font-size: 28px; margin-bottom: 18px; }
     .section-subtitle { color: var(--muted); margin-bottom: 24px; }
     .grid { display: grid; gap: 18px; }
     .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
     .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
     @media (max-width: 920px) { .hero { grid-template-columns: 1fr; } .grid.cols-3 { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 640px) { .grid.cols-3, .grid.cols-2 { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) {
+      .grid.cols-3, .grid.cols-2 { grid-template-columns: 1fr; }
+      .nav { padding: 10px 0; gap: 6px; }
+      .menu { gap: 2px; margin-left: -7px; }
+      .menu a { padding: 6px 7px; font-size: 13px; }
+      section[id] { scroll-margin-top: 100px; }
+      .hero { padding-top: 40px; }
+    }
     .card { border: 1px solid var(--border); background: var(--card); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
     .card h3 { margin: 2px 0 8px; font-size: 18px; }
+    .project { display: flex; flex-direction: column; align-items: flex-start; }
+    .project h3 { margin-top: 12px; }
+    .project .muted { margin: 0 0 12px; }
+    .project .tech { margin: auto 0 0; padding-top: 4px; font-size: 13px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .project .link { margin: 14px 0 0; }
     .pill { display: inline-block; padding: 6px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 22%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border)); color: var(--text); font-size: 12px; }
+    a.pill:hover { background: color-mix(in srgb, var(--accent) 34%, transparent); }
     .timeline { position: relative; }
-    .timeline::before { content: ""; position: absolute; left: 10px; top: 4px; bottom: 4px; width: 2px; background: var(--border); }
+    .timeline::before { content: ""; position: absolute; left: 28px; top: 22px; bottom: 22px; width: 2px; background: var(--border); }
     .t-item { position: relative; padding-left: 38px; margin-bottom: 18px; }
+    .t-item:last-child { margin-bottom: 0; }
     .t-item::before { content: ""; position: absolute; left: 4px; top: 4px; width: 14px; height: 14px; border-radius: 999px; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 30%, transparent); }
     .t-meta { color: var(--muted); font-size: 13px; margin-bottom: 6px; }
-    .contact-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 18px; }
-    @media (max-width: 840px) { .contact-grid { grid-template-columns: 1fr; } }
-    form { display: grid; gap: 12px; }
-    label { font-weight: 600; font-size: 14px; }
-    input, textarea {
-      width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border);
-      background: var(--card); color: var(--text);
-    }
-    textarea { min-height: 140px; resize: vertical; }
     .muted { color: var(--muted); }
     footer { border-top: 1px solid var(--border); padding: 30px 0 60px; color: var(--muted); }
-    .social a { margin-right: 12px; border: 1px solid var(--border); padding: 8px 12px; border-radius: 999px; }
     .center { text-align: center; }
   </style>
 </head>
@@ -136,17 +144,17 @@
   <main class="container">
     <section class="hero">
       <div>
-        <span class="tag">Available for freelance / full-time</span>
-        <h1>Hi, I'm <span style="color:var(--accent)">Muhammed Dulfazal</span> — a <u>UI/UX-minded</u> Front-End Developer crafting fast, elegant websites.</h1>
-        <p class="lead">I specialize in creating responsive, user-friendly web interfaces with clean code and performance-focused design. My goal is to deliver seamless digital experiences for clients and businesses.</p>
+        <span class="tag">Open to AI/ML internships</span>
+        <h1>Hi, I'm <span style="color:var(--accent)">Muhammed Dulfazal</span> — an MSc AI/ML student building AI and computer vision applications.</h1>
+        <p class="lead">I'm passionate about building practical AI systems, computer vision applications, backend services and intelligent software. Currently learning, experimenting, and turning ideas into real projects.</p>
         <div class="cta">
           <a class="btn primary" href="#projects">See My Work</a>
           <a class="btn" href="#contact">Contact Me</a>
         </div>
       </div>
       <aside class="avatar-card">
-        <img src="profile.jpg" alt="Muhammed Dulfazal" class="avatar" />
-        <div class="avatar-note">📍 Calicut, Kerala</div>
+        <img src="profile.jpg" alt="Portrait of Muhammed Dulfazal" class="avatar" />
+        <div class="avatar-note">📍 Vellore, India</div>
       </aside>
     </section>
 
@@ -155,108 +163,136 @@
       <p class="section-subtitle">Who I am & how I work</p>
       <div class="card">
         <p>
-          Hi, I'm Muhammed Dulfazal, born in Calicut, Kerala, and raised in the UAE. Currently, I’m pursuing my BCA at Kristu Jayanti University. I’m passionate about coding, technology, and building projects that solve real-world problems. My goal is to become a skilled developer, create innovative solutions, and make a positive impact.
+          Hi, I'm Muhammed Dulfazal — Dilu to most people. I was born in Calicut, Kerala, and raised in the UAE. After completing my BCA at Kristu Jayanti University, I'm now pursuing an MSc in Artificial Intelligence & Machine Learning at VIT Vellore.
         </p>
         <p>
-          <strong>Highlights:</strong> 3+ years experience • UI/UX-driven development • Performance optimization
+          I learn by building: computer vision models, the backend services around them, and the mobile apps that put them in front of people. I'm still learning, and I'm serious about getting very good at this.
+        </p>
+        <p>
+          <strong>Focus:</strong> Computer vision • Applied machine learning • Backend development • Android
         </p>
       </div>
     </section>
 
-<section id="skills">
-  <h2 class="section-title">Skills</h2>
-  <p class="section-subtitle">Tech I work with</p>
-  <div class="grid cols-3">
-    <div class="card">
-      <h3>Core</h3>
-      <p class="muted">HTML • CSS • Java • Python • C</p>
-    </div>
-    <div class="card">
-      <h3>Development</h3>
-      <p class="muted">Django • Flutter • TensorFlow • MySQL</p>
-    </div>
-    <div class="card">
-      <h3>Tools</h3>
-      <p class="muted">Git & GitHub • VSCode • Android Studio • Figma</p>
-    </div>
-  </div>
-</section>
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <p class="section-subtitle">Tech I work with</p>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Languages</h3>
+          <p class="muted">Python • Java • Kotlin • SQL • JavaScript / TypeScript (basics)</p>
+        </div>
+        <div class="card">
+          <h3>AI / ML</h3>
+          <p class="muted">PyTorch • TensorFlow • scikit-learn • Hugging Face Transformers • YOLO</p>
+        </div>
+        <div class="card">
+          <h3>Computer vision & data</h3>
+          <p class="muted">OpenCV • MediaPipe • TensorFlow Lite • Pandas • NumPy • Matplotlib</p>
+        </div>
+        <div class="card">
+          <h3>Backend & web</h3>
+          <p class="muted">Django • Django REST Framework • REST APIs • Next.js • HTML / CSS</p>
+        </div>
+        <div class="card">
+          <h3>Mobile</h3>
+          <p class="muted">Android (Kotlin) • Flutter / FlutterFlow</p>
+        </div>
+        <div class="card">
+          <h3>Tools & databases</h3>
+          <p class="muted">Git & GitHub • Linux • Jupyter / Colab • Android Studio • VS Code • MySQL • SQLite</p>
+        </div>
+      </div>
+    </section>
 
-<section id="projects">
-  <h2 class="section-title">Projects</h2>
-  <p class="section-subtitle">What I’ve been working on</p>
-  <div class="grid cols-3">
-    <article class="card">
-      <div class="pill">2025 • College Project</div>
-      <h3>V-SL Recognition</h3>
-      <p class="muted">A web app using Django, YOLO, OpenPose, and Whisper to recognize Indian Sign Language and voice input in real time.</p>
-      <p><a class="pill" href="#">GitHub</a></p>
-    </article>
-    <article class="card">
-      <div class="pill">2025 • Personal</div>
-      <h3>YouTube Video Summarizer</h3>
-      <p class="muted">Created a tool that summarizes YouTube videos into short notes using NLP and AI models.</p>
-      <p><a class="pill" href="#">GitHub</a></p>
-    </article>
-    <article class="card">
-      <div class="pill">2024 • Business</div>
-      <h3>Car Accessories Website</h3>
-      <p class="muted">Developed an online storefront for selling car accessories with a clean UI and easy navigation.</p>
-      <p><a class="pill" href="#">Live Site</a></p>
-    </article>
-  </div>
-</section>
-
+    <!-- To add a project, copy one <article> block. Leave out the "link" paragraph if there is nothing to link to yet. -->
+    <section id="projects">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">What I’ve been working on</p>
+      <div class="grid cols-3">
+        <article class="card project">
+          <div class="pill">2025 – now • In progress</div>
+          <h3>Indian Sign Language Recognition</h3>
+          <p class="muted">Recognizing Indian Sign Language from video. Right now: MediaPipe hand landmarks feeding an LSTM, aimed at sentence-level recognition. Earlier experiments used YOLO-based detection on a 35-class hand-sign dataset.</p>
+          <p class="tech">MediaPipe · LSTM · PyTorch · YOLO</p>
+          <p class="link"><a class="pill" href="https://github.com/dulfazl/yolov11-isl">GitHub</a></p>
+        </article>
+        <article class="card project">
+          <div class="pill">2025 • Personal</div>
+          <h3>YouTube Video Summarizer</h3>
+          <p class="muted">A Django web app that processes YouTube videos and generates summaries of them with NLP.</p>
+          <p class="tech">Django · Hugging Face Transformers · AssemblyAI · Pytube</p>
+        </article>
+        <article class="card project">
+          <div class="pill">2024 • Business</div>
+          <h3>Crawford Car Accessories</h3>
+          <p class="muted">Website and backend for a car accessories business, built on Django and a REST API and deployed on cloud hosting. Alongside it, a Kotlin Android app for the same ecosystem.</p>
+          <p class="tech">Django · Django REST Framework · Kotlin</p>
+        </article>
+        <article class="card project">
+          <div class="pill">2026 • Business</div>
+          <h3>PITLANE</h3>
+          <p class="muted">Live service tracking for a car care workshop. Customers follow every stage of the work on their car from their phone, and staff run the same board from the shop floor.</p>
+          <p class="tech">React Native · Expo · TypeScript · Node.js · SQLite</p>
+          <p class="link"><a class="pill" href="https://github.com/dulfazl/pitlane">GitHub</a></p>
+        </article>
+        <article class="card project">
+          <div class="pill">Private</div>
+          <h3>Maître</h3>
+          <p class="muted">An AI maître d' for restaurants: QR-scanned, allergy-aware, conversational ordering. Guests talk to it instead of tapping through a PDF menu.</p>
+          <p class="tech">TypeScript</p>
+        </article>
+        <article class="card project">
+          <div class="pill">Mobile app</div>
+          <h3>Soq Car Care</h3>
+          <p class="muted">A car-care and car-wash booking app: mobile client, booking workflows and backend/API integration.</p>
+          <p class="tech">Mobile · REST API</p>
+        </article>
+      </div>
+    </section>
 
     <section id="experience">
-      <h2 class="section-title">Experience</h2>
-      <p class="section-subtitle">Roles & impact</p>
+      <h2 class="section-title">Experience & education</h2>
+      <p class="section-subtitle">Where I've been learning and building</p>
       <div class="card timeline">
         <div class="t-item">
-          <div class="t-meta">2023 — Present · Front-End Developer · Freelance</div>
-          <h3>Building websites & dashboards</h3>
-          <p class="muted">Delivered responsive, high-performance sites for startups and businesses. Focus on UX audits and performance passes.</p>
+          <div class="t-meta">Now · MSc Artificial Intelligence & Machine Learning · VIT Vellore</div>
+          <h3>Postgraduate study</h3>
+          <p class="muted">Machine learning, probability & statistics, data structures & algorithms, database systems and software engineering.</p>
         </div>
         <div class="t-item">
-          <div class="t-meta">2021 — 2023 · Web Designer · Agency</div>
-          <h3>Design to web</h3>
-          <p class="muted">Converted Figma designs into production-ready, accessible websites. Handled CSS architecture and design systems.</p>
+          <div class="t-meta">Freelance · Client web work</div>
+          <h3>Websites for real businesses</h3>
+          <p class="muted">Shipped sites for an equipment supplier and a cargo business, plus a Django build.</p>
+        </div>
+        <div class="t-item">
+          <div class="t-meta">Before · BCA · Kristu Jayanti University</div>
+          <h3>Bachelor of Computer Applications</h3>
+          <p class="muted">Undergraduate degree. My sign language recognition work started here as a college project.</p>
         </div>
       </div>
     </section>
 
     <section id="contact">
       <h2 class="section-title">Contact</h2>
-      <p class="section-subtitle">Let’s build something great</p>
-      <div class="contact-grid">
-        <div class="card">
-          <form action="#" method="post" onsubmit="return false">
-            <label for="name">Your Name</label>
-            <input id="name" name="name" placeholder="Enter Name" required>
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="yourmail@example.com" required>
-            <label for="msg">Message</label>
-            <textarea id="msg" name="message" placeholder="Tell me about your project…" required></textarea>
-            <button class="btn primary" type="submit" aria-disabled="true">Send Message</button>
-            <div class="muted">This form is a demo.</div>
-          </form>
+      <p class="section-subtitle">Open to AI/ML internships</p>
+      <div class="card">
+        <p>The quickest way to reach me is email or LinkedIn.</p>
+        <div class="cta" style="margin-top:14px">
+          <a class="btn primary" href="mailto:mail.dulfazl@gmail.com">mail.dulfazl@gmail.com</a>
+          <a class="btn" href="https://www.linkedin.com/in/dulfazal/">LinkedIn</a>
+          <a class="btn" href="https://github.com/dulfazl">GitHub</a>
         </div>
-        <div class="card">
-          <h3>Direct</h3>
-          <p class="muted">📍 Calicut, Kerala, India<br>✉️ <a href="mailto:dulfazal9@gmail.com">mail.dulfazl@gmail.com</a><br>🔗 <a href="https://www.linkedin.com/in/muhammed-dulfazal-4499332b7/">LinkedIn</a></p>
-          <div class="social" aria-label="Social links">
-            <a href="https://www.linkedin.com/in/muhammed-dulfazal-389a01286/">LinkedIn</a>
-            <a href="https://github.com/dulfazl">GitHub</a>
-          </div>
-        </div>
+        <p class="muted" style="margin:18px 0 0">📍 Vellore, Tamil Nadu, India</p>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="container">
-      <div class="center">© <span id="y">2025</span> Muhammed Dulfazal — Built with semantic HTML & modern CSS.</div>
+      <div class="center">© <span id="y">2026</span> Muhammed Dulfazal — Built with semantic HTML & modern CSS.</div>
     </div>
   </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
